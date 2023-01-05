@@ -260,7 +260,7 @@ impl Service<Uri> for AlpnConnector {
         if config.is_none() {
             self.build_config()
         }
-        let config = config.unwrap();
+        let config = self.config.clone().unwrap();
 
         let fut = async move {
             let socket = Self::resolve(dst).await?;
